@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Cp-Ufo';
+  src: url(/CP_and_U-Fo.ttf) format('truetype');
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-image: url(/assets/bg_sky.png);
+}
+
+@theme{
+  --font-ufo: "Cp-Ufo", sans-serif;
+}
+
