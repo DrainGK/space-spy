@@ -1,19 +1,32 @@
 import './App.css'
+import Characters from './sections/Characters'
+import Faq from './sections/Faq'
 import Header from './sections/Header'
 import News from './sections/News'
 import Synopsis from './sections/Synopsis'
+import Trivia from './sections/Trivia'
+// import Video from './sections/Video'
 import Youtube from './sections/Youtube'
 
 function App() {
 
   return (
     <div id='wrapper'
-    className='max-w-[430px] outline-4 outline-amber-400 mx-auto w-screen h-fit bg-[url(/assets/bg_sky.png)] bg-cover overflow-x-hidden'
+    className='max-w-[430px]  mx-auto w-screen h-fit overflow-x-hidden'
     >
-      <Header />
-      <Youtube />
-      <Synopsis />
-      <News />
+      <div className='bg-[url(/assets/comingsoon.webp)] bg-cover w-screen h-screen fixed -z-1 left-0'></div>
+      <div className='w-full h-full block z-10'>
+        <Header />
+        <Youtube />
+        <div　className='bg-[url(/assets/bg_sky.webp)] bg-cover'>
+          <Synopsis />
+          <News />
+        </div>
+        <Characters />
+        {/* <Video /> */}
+        <Trivia />
+        <Faq />
+      </div>
     </div>
   )
 }
