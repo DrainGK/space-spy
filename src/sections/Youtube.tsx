@@ -12,6 +12,9 @@ const Youtube = () => {
         <div className='mb-10 mt-15 flex flex-col items-center'>
             <img src="/assets/youtube.webp" alt="" 
             className='w-fit h-fit'/>
+            
+            <p className='text-center text-2xl mt-1 text-[#282828] font-ufo'>チャネル <br />
+            </p>
             <p className='text-center text-2xl mt-2 text-[#008FF5] font-ufo'>coming soon <br />
             </p>
         </div>

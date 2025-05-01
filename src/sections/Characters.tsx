@@ -19,7 +19,7 @@ const Characters = () => {
             />
 
             {/* Texte centré */}
-            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-[90%] text-center py-3 font-ufo text-3xl text-[#FDD717] bg-white rounded-lg shadow-md"
+            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-2/3 z-20 w-[90%] text-center py-3 font-ufo text-3xl text-[#FDD717] bg-white rounded-lg shadow-md"
               style={{ textShadow: '0px 4px 0 rgba(55, 6, 23, 1)' }}>
               キャラクター
             </p>
