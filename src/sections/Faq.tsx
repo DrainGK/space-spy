@@ -23,7 +23,7 @@ const Faq = () => {
   return (
 
 
-    <section className="relative w-full flex flex-col items-center bg-[#FFBA08] border-4 border-[#FAA307] py-20">
+    <section className="relative w-full flex flex-col items-center bg-[#FFBA08] border-4 border-[#FAA307] py-20" id="question">
         <img src="/assets/bolt_top.svg" alt="bolt top" className="absolute top-0"/>
         <img src="/assets/bolt_top.svg" alt="bolt top" className="absolute bottom-0"/>
         <img src="/assets/faq_title.webp" alt="faq title" />
@@ -33,11 +33,11 @@ const Faq = () => {
                 <div key={index} className="w-9/10 bg-white rounded-2xl p-5 flex flex-col gap-y-4 shadow-[8px_8px_0_#00A4F5]"
                 onClick={()=>handleClick(index)}
                 >
-                    <span className="flex gap-x-3">
-                        <p className="font-ufo text-sm text-[#371206]">{item.question}</p>
+                    <span className="flex gap-x-3 font-yusei font-bold">
+                        <p className=" text-sm text-[#371206]">{item.question}</p>
                         <img src="/assets/arrow_up.svg" alt="arrow up" className={`${isClick && currentIndex === index ? "rotate-180":""}`}/>
                     </span>
-                    <p className={`font-ufo text-sm text-[#373737] ${isClick && currentIndex === index ? "block":"hidden"}`}>{item.answer}</p>
+                    <p className={` text-sm text-[#373737] ${isClick && currentIndex === index ? "block":"hidden"}`}>{item.answer}</p>
                 </div>
             ))
         }

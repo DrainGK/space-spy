@@ -21,7 +21,7 @@ const News = () => {
     ]
     
   return (
-    <section className='py-10 flex flex-col items-center relative'>
+    <section className='py-10 flex flex-col items-center relative' id="news">
         <img src="/assets/news_title.webp" alt="news title" className='mb-30 block z-10'/>
         <ul className='w-9/10 flex flex-col gap-y-5'>
             {news.map((item, index)=>(

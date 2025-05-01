@@ -4,6 +4,7 @@ const Youtube = () => {
   return (
     <section
         className='relative bg-white w-full h-fit flex flex-col justify-center items-center pb-10'
+        id='youtube'
     >   
         <img src="/assets/spike_youtube_section.svg" alt="spikes"
             className='absolute top-0 w-full  -translate-y-[70%]'

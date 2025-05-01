@@ -1,4 +1,5 @@
 import './App.css'
+import Menu from './components/Menu'
 import Characters from './sections/Characters'
 import Faq from './sections/Faq'
 import Header from './sections/Header'
@@ -16,6 +17,7 @@ function App() {
     >
       <div className='bg-[url(/assets/comingsoon.webp)] bg-cover w-screen h-screen fixed -z-1 left-0'></div>
       <div className='w-full h-full block z-10'>
+        <Menu />
         <Header />
         <Youtube />
         <div　className='bg-[url(/assets/bg_sky.webp)] bg-cover'>
