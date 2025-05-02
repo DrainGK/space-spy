@@ -10,8 +10,8 @@ const Youtube = () => {
             className='absolute top-0 w-full  -translate-y-[70%]'
         />
         <div className='mb-10 mt-15 flex flex-col items-center'>
-            <img src="/assets/youtube.webp" alt="" 
-            className='w-fit h-fit'/>
+            <img src="/assets/youtube.svg" alt="youtube logo" 
+            className='w-[187px] h-fit'/>
             
             <p className='text-center text-2xl mt-1 text-[#282828] font-ufo'>チャネル <br />
             </p>

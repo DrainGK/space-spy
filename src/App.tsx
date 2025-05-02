@@ -2,6 +2,7 @@ import './App.css'
 import Menu from './components/Menu'
 import Characters from './sections/Characters'
 import Faq from './sections/Faq'
+import Footer from './sections/Footer'
 import Header from './sections/Header'
 import News from './sections/News'
 import Synopsis from './sections/Synopsis'
@@ -28,6 +29,7 @@ function App() {
         {/* <Video /> */}
         <Trivia />
         <Faq />
+        <Footer />
       </div>
     </div>
   )

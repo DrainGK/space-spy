@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface Video {
@@ -6,55 +6,49 @@ interface Video {
   title: string;
 }
 
-const getEmbedUrl = (urlOrId: string) => {
-  // Si c'est déjà une URL d'embed, on la renvoie telle quelle
+// Récupère l'ID YouTube à partir d'une URL ou d'un ID
+const getVideoId = (urlOrId: string) => {
   if (urlOrId.includes("youtube.com/embed/")) {
-    return urlOrId;
+    return urlOrId.split("/embed/")[1];
   }
-  // Si c'est une URL "watch?v=", on extrait le param v
   if (urlOrId.includes("watch?v=")) {
-    const id = urlOrId.split("watch?v=")[1].split("&")[0];
-    return `https://www.youtube.com/embed/${id}`;
+    return urlOrId.split("watch?v=")[1].split("&")[0];
   }
-  // Sinon on considère que c'est juste l'ID
-  return `https://www.youtube.com/embed/${urlOrId.split("?")[0]}`;
+  return urlOrId;
 };
 
 const YoutubeCarousel: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
-
-  // 11 slots : 4 skeletons + up to 7 vidéos
+  // 11 slots : skeletons par défaut
   const [videos, setVideos] = useState<Video[]>(
+    // Array(11).fill({ url: "0bT2p-GsF2U", title: "test" })
     Array(11).fill({ url: "/assets/youtube_card.png", title: "" })
   );
-
+  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // recalcul des contraintes de drag dès que le DOM change
+  // Calcul des contraintes de drag dès que la liste change
   useLayoutEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-
     requestAnimationFrame(() => {
       const contentWidth = el.scrollWidth;
       const viewWidth = el.clientWidth;
-      // on enlève viewWidth pour que la limite soit bien la fin des slides
       const maxLeft = contentWidth - viewWidth + viewWidth / 2;
       const maxRight = (viewWidth / 2) * 0.25;
       setConstraints({ left: -maxLeft, right: maxRight });
     });
   }, [videos]);
 
-  // fetch JSON au montage
+  // Chargement des vidéos réelles depuis /videos.json
   useEffect(() => {
     (async () => {
       try {
         const res = await fetch("/videos.json");
         if (!res.ok) throw new Error("Status " + res.status);
         const data: Video[] = await res.json();
-
         setVideos(prev => {
           const slotCount = prev.length;
           const copy = [...prev];
@@ -70,7 +64,7 @@ const YoutubeCarousel: React.FC = () => {
     })();
   }, []);
 
-  // mise à jour du dot actif
+  // Met à jour l'indicateur actif en fin ou pendant le drag
   const handleDragEnd = () => {
     const el = containerRef.current;
     const sec = sectionRef.current;
@@ -80,9 +74,9 @@ const YoutubeCarousel: React.FC = () => {
     const zoneL = left + width * 0.1;
     const zoneR = left + width * 0.9;
 
-    const imgs = Array.from(el.querySelectorAll("img, iframe"));
-    for (let i = 0; i < imgs.length; i++) {
-      const r = imgs[i].getBoundingClientRect();
+    const items = Array.from(el.children) as HTMLElement[];
+    for (let i = 0; i < items.length; i++) {
+      const r = items[i].getBoundingClientRect();
       const centerX = r.left + r.width / 2;
       if (centerX >= zoneL && centerX <= zoneR) {
         setActiveIndex(i);
@@ -92,50 +86,45 @@ const YoutubeCarousel: React.FC = () => {
   };
 
   return (
-    <div ref={sectionRef} className="carousel w-full overflow-x-hidden">
-      <motion.div
-        ref={containerRef}
-        className="slides-container flex ml-15 gap-x-10"
-        drag="x"
-        dragConstraints={constraints}
-        onDragEnd={handleDragEnd}
-        onDrag={handleDragEnd}
-        dragTransition={{ power: 0 }}
-      >
-        {videos.map((video, i) => {
-          const isSkeleton = video.title === "";
-          const embedUrl = getEmbedUrl(video.url);
+    <>
+      <div ref={sectionRef} className="carousel w-full overflow-x-hidden">
+        <motion.div
+          ref={containerRef}
+          className="slides-container flex ml-15 gap-x-10"
+          drag="x"
+          dragConstraints={constraints}
+          dragTransition={{ power: 0 }}
+          onDrag={handleDragEnd}
+          onDragEnd={handleDragEnd}
+        >
+          {videos.map((video, idx) => {
+            const isSkeleton = video.title === "";
+            const id = getVideoId(video.url);
+            const thumbUrl = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 
-          return (
-            <div key={i} className="w-46 flex-shrink-0">
-              {isSkeleton ? (
-                // Skeleton placeholder
-                <img
-                  src={video.url}
-                  alt={`skeleton ${i + 1}`}
-                  draggable={false}
-                  className="w-full"
-                />
-              ) : (
-                // **Vraie vidéo** YouTube en iframe
-                <iframe
-                  key={i}
-                  className="w-full h-[328px]"
-                  src={embedUrl}
-                  title={video.title}
-                  width="185"
-                  height="328"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-
-              )}
-            </div>
-          );
-        })}
-      </motion.div>
+            return (
+              <div key={idx} className="w-46 flex-shrink-0">
+                {isSkeleton ? (
+                  <img
+                    src={video.url}
+                    alt={`skeleton ${idx + 1}`}
+                    draggable={false}
+                    className="w-full h-[328px] object-cover"
+                  />
+                ) : (
+                  <img
+                    src={thumbUrl}
+                    alt={video.title}
+                    draggable={false}
+                    className="w-full h-[328px] object-cover cursor-pointer"
+                    onClick={() => setSelectedVideo(video)}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
 
       <div className="indicators-container flex gap-x-2 w-fit mx-auto my-5">
         {videos.map((_, idx) => (
@@ -147,7 +136,33 @@ const YoutubeCarousel: React.FC = () => {
           />
         ))}
       </div>
-    </div>
+
+      {selectedVideo && (
+        <div
+          className="fixed h-screen w-screen inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div className="relative h-8/10 w-9/10 flex items-center justify-center rounded-4xl" onClick={e => e.stopPropagation()}>
+          <button
+              className="absolute top-2 right-2 text-white text-6xl leading-none"
+              onClick={() => setSelectedVideo(null)}
+            >
+              ×
+            </button>
+            <iframe
+              width="90%"
+              height="80%"
+              src={`https://www.youtube.com/embed/${getVideoId(
+                selectedVideo.url
+              )}?autoplay=1`}
+              frameBorder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
