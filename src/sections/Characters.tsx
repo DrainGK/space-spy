@@ -1,7 +1,21 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Characters = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const x1 = useTransform(scrollYProgress, [0.5, 1], [0, -100]); // part vers la gauche
+  const x2 = useTransform(scrollYProgress, [0.5, 1], [0, -50]);
+  const x3 = useTransform(scrollYProgress, [0.5, 1], [0, -25]);
+  const x4 = useTransform(scrollYProgress, [0.5, 1], [0, 50]);  // part vers la droite
+  const x5 = useTransform(scrollYProgress, [0.5, 1], [0, 100]);
+
   return (
-    <section className='bg-[rgb(0,164,245)] w-full flex flex-col items-cente pb-10 relative' id="character">
+    <section  className='bg-[rgb(0,164,245)] w-full flex flex-col items-cente pb-10 relative' id="character">
 
         <div className="w-8/10 mx-auto my-30 shadow-[8px_8px_0_#370617] bg-white rounded-lg">
             <p className="text-center py-4 font-ufo text-5xl text-[#FDD717]"
@@ -39,12 +53,12 @@ const Characters = () => {
 
         <img src="/assets/arrow.svg" alt="arrow" className="absolute  bottom-0 z-5" />
 
-        <ul className="font-alpha text-white text-5xl block z-10 w-full text-center mt-20">
-          <li className="ml-18">TRIVIA</li>
-          <li className="ml-10">TRIVIA</li>
-          <li className="ml-2">TRIVIA</li>
-          <li className="mr-2">TRIVIA</li>
-          <li className="mr-10">TRIVIA</li>
+        <ul ref={ref} className="font-alpha text-white text-5xl block z-10 w-full text-center mt-20">
+          <motion.li style={{ x: x1 }} className="">TRIVIA</motion.li>
+          <motion.li style={{ x: x2 }} className="">TRIVIA</motion.li>
+          <motion.li style={{ x: x3 }} className="">TRIVIA</motion.li>
+          <motion.li style={{ x: x4 }} className="">TRIVIA</motion.li>
+          <motion.li style={{ x: x5 }} className="">TRIVIA</motion.li>
         </ul>
         
         <img src="/assets/group_cloud.webp" alt="group on the cloud" className="absolute shrink-0 object-contain bottom-0 z-10 translate-y-1/4" width={440} height={234}/>
