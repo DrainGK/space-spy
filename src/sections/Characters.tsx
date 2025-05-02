@@ -1,25 +1,10 @@
 
 const Characters = () => {
   return (
-    <section className='bg-[rgb(0,164,245)] w-full flex flex-col items-cente pt-20 pb-10 relative' id="character">
+    <section className='bg-[rgb(0,164,245)] w-full flex flex-col items-cente pb-10 relative' id="character">
 
-        <div className="relative w-[342px] h-[342px] mx-auto mb-15">
-            {/* Étoile noire */}
-            <img
-              className="absolute inset-0 w-full h-full object-contain z-0"
-              src="/assets/star_2.svg"
-              alt="star-title"
-            />
-
-            {/* Personnages */}
-            <img
-              src="/assets/character_title.webp"
-              alt="title"
-              className="absolute inset-0 w-full h-full object-contain z-10"
-            />
-
-            {/* Texte centré */}
-            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-2/3 z-20 w-[90%] text-center py-3 font-ufo text-3xl text-[#FDD717] bg-white rounded-lg shadow-md"
+        <div className="w-8/10 mx-auto my-30 shadow-[8px_8px_0_#370617] bg-white rounded-lg">
+            <p className="text-center py-4 font-ufo text-5xl text-[#FDD717]"
               style={{ textShadow: '0px 4px 0 rgba(55, 6, 23, 1)' }}>
               キャラクター
             </p>
@@ -63,7 +48,7 @@ const Characters = () => {
         </ul>
 
         <div className="flex z-10 absolute bottom-0 translate-y-1/3">
-          <img src="/assets/granma.webp" alt="grandma" width={107} height={168}/>
+          <img src="/assets/granma.webp" alt="grandma" className="shrink-0" width={117} height={168.6}/>
           <img src="/assets/grandpa.webp" alt="grandpa" width={205} height={216}/>
           <img src="/assets/oyakata_cloud.webp" alt="oyakata on the cloud" width={134} height={206}/>
         </div>
