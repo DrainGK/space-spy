@@ -46,12 +46,8 @@ const Characters = () => {
           <li className="mr-2">TRIVIA</li>
           <li className="mr-10">TRIVIA</li>
         </ul>
-
-        <div className="flex z-10 absolute bottom-0 translate-y-1/3">
-          <img src="/assets/granma.webp" alt="grandma" className="shrink-0" width={117} height={168.6}/>
-          <img src="/assets/grandpa.webp" alt="grandpa" width={205} height={216}/>
-          <img src="/assets/oyakata_cloud.webp" alt="oyakata on the cloud" width={134} height={206}/>
-        </div>
+        
+        <img src="/assets/group_cloud.webp" alt="group on the cloud" className="absolute shrink-0 object-contain bottom-0 z-10 translate-y-1/4" width={440} height={234}/>
 
     </section>
   )
