@@ -24,9 +24,9 @@ const Faq = () => {
 
 
     <section className="relative w-full flex flex-col items-center bg-[#FFBA08] border-4 border-[#FAA307] py-20" id="question">
-        <img src="/assets/bolt_top.svg" alt="bolt top" className="absolute top-0"/>
-        <img src="/assets/bolt_top.svg" alt="bolt top" className="absolute bottom-0"/>
-        <img src="/assets/faq_title.webp" alt="faq title" />
+        <img src="/hp/assets/bolt_top.svg" alt="bolt top" className="absolute top-0"/>
+        <img src="/hp/assets/bolt_top.svg" alt="bolt top" className="absolute bottom-0"/>
+        <img src="/hp/assets/faq_title.webp" alt="faq title" />
         <div className="w-full flex flex-col items-center gap-y-10 mt-20">
         {
             faq.map((item,index)=>(
@@ -35,7 +35,7 @@ const Faq = () => {
                 >
                     <span className="flex gap-x-3 font-yusei font-bold">
                         <p className=" text-sm text-[#371206]">{item.question}</p>
-                        <img src="/assets/arrow_up.svg" alt="arrow up" className={`${isClick && currentIndex === index ? "rotate-180":""}`}/>
+                        <img src="/hp/assets/arrow_up.svg" alt="arrow up" className={`${isClick && currentIndex === index ? "rotate-180":""}`}/>
                     </span>
                     <p className={` text-sm text-[#373737] ${isClick && currentIndex === index ? "block":"hidden"}`}>{item.answer}</p>
                 </div>

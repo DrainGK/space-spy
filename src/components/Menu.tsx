@@ -13,7 +13,7 @@ const Menu = () => {
       {!isOpen && (
         <button onClick={handleToggleMenu} className="fixed top-4 right-4 z-50">
           {/* Remplace par ton SVG */}
-          <img src="/assets/menu.svg" alt="Menu" className="w-[70px] h-[50px]" />
+          <img src="/hp/assets/menu.svg" alt="Menu" className="w-[70px] h-[50px]" />
         </button>
       )}
 

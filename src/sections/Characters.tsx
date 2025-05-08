@@ -29,8 +29,8 @@ const Characters = () => {
           <p className="w-7/10 px-5 pb-2 text-sm">
             ありとあらゆるスパイ技術を体得し身体的能力に秀でた知的 生命体。普段はおっとりしているが興奮状態に入ると、誰も手 が付けられない凶暴さ見せることも!  食欲・性欲・睡眠欲を兼ね備えた超エリート。見た目とは裏腹に 超能力やテレパシーを使いこなす。
           </p>
-          <img className="ml-2" src="/assets/pres_bura.png" alt="bura" height={117} width={282}/>
-          <img className="absolute -top-1/4 -right-1/2" src="/assets/bura_front.webp" alt="bura" height={420} width={350}/>
+          <img className="ml-2" src="/hp/assets/pres_bura.png" alt="bura" height={117} width={282}/>
+          <img className="absolute -top-1/4 -right-1/2" src="/hp/assets/bura_front.webp" alt="bura" height={420} width={350}/>
         </div>
 
         <p className="font-ufo text-4xl text-white px-5 pb-5 ml-auto">スッピ</p>
@@ -38,8 +38,8 @@ const Characters = () => {
           <p className="w-7/10 px-5 pb-2 text-sm ml-auto">
           ありとあらゆるスパイ技術を体得し知的能力に秀でた知的生命体。 性格的にせっかちな面があり神経質。 知的指数は高いのだが、咄嗟の判断に脆い面あり。 見た目とは裏腹に超能力やテレパシーを使いこなす。
           </p>
-          <img className="ml-auto px-2" src="/assets/pres_suppi.webp" alt="suppi" height={117} width={282}/>
-          <img className="absolute -top-1/2 -left-1/2" src="/assets/suppi_front.webp" alt="suppi" height={420} width={350}/>
+          <img className="ml-auto px-2" src="/hp/assets/pres_suppi.webp" alt="suppi" height={117} width={282}/>
+          <img className="absolute -top-1/2 -left-1/2" src="/hp/assets/suppi_front.webp" alt="suppi" height={420} width={350}/>
         </div>
 
         <p className="font-ufo text-4xl text-white pl-5 pb-5">OYAKATA</p>
@@ -47,11 +47,11 @@ const Characters = () => {
           <p className="w-7/10 px-5 pb-2 text-sm">
           基本、脇役だが、時代を問わず建築現場を切り盛りする親分的存在。 時に主役を射止めてしまうほどの存在感は、それもまた人生、その ありがたみを教えてくれる。
           </p>
-          <img className="ml-2" src="/assets/pres_oyakata.webp" alt="bura" height={117} width={282}/>
-          <img className="absolute -top-1/2 -right-1/2" src="/assets/oyakata_front.webp" alt="bura" height={420} width={350}/>
+          <img className="ml-2" src="/hp/assets/pres_oyakata.webp" alt="bura" height={117} width={282}/>
+          <img className="absolute -top-1/2 -right-1/2" src="/hp/assets/oyakata_front.webp" alt="bura" height={420} width={350}/>
         </div>
 
-        <img src="/assets/arrow.svg" alt="arrow" className="absolute  bottom-0 z-5" />
+        <img src="/hp/assets/arrow.svg" alt="arrow" className="absolute  bottom-0 z-5" />
 
         <ul ref={ref} className="font-alpha text-white text-5xl block z-10 w-full text-center mt-20">
           <motion.li style={{ x: x1 }} className="">TRIVIA</motion.li>
@@ -61,7 +61,7 @@ const Characters = () => {
           <motion.li style={{ x: x5 }} className="">TRIVIA</motion.li>
         </ul>
         
-        <img src="/assets/group_cloud.webp" alt="group on the cloud" className="absolute shrink-0 object-contain bottom-0 z-10 translate-y-1/4" width={440} height={234}/>
+        <img src="/hp/assets/group_cloud.webp" alt="group on the cloud" className="absolute shrink-0 object-contain bottom-0 z-10 translate-y-1/4" width={440} height={234}/>
 
     </section>
   )

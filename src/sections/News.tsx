@@ -22,7 +22,7 @@ const News = () => {
     
   return (
     <section className='py-10 flex flex-col items-center relative' id="news">
-        <img src="/assets/news_title.svg" alt="news title" className='mb-30 block z-10'/>
+        <img src="/hp/assets/news_title.svg" alt="news title" className='mb-30 block z-10'/>
         <ul className='w-9/10 flex flex-col gap-y-5'>
             {news.map((item, index)=>(
                 <li className='flex flex-col gap-y-2' key={index}>
@@ -37,9 +37,9 @@ const News = () => {
             ))}
         </ul>
         <p className='font-ufo text-2xl text-white mt-10'>more...</p>
-        <img className='absolute z-1 top-0 left-0 -translate-x-1/4 -translate-y-1/3' src="/assets/planet_3.webp" alt="" />
-        <img className='absolute z-5 top-0 left-0 -translate-x-1/3 -translate-y-3/4' src="/assets/spy_2_2.webp" alt="" />
-        <img className='absolute z-5 top-0 right-0 translate-x-3/5 -translate-y-3/5' src="/assets/spy_1_2.webp" alt="" />
+        <img className='absolute z-1 top-0 left-0 -translate-x-1/4 -translate-y-1/3' src="/hp/assets/planet_3.webp" alt="" />
+        <img className='absolute z-5 top-0 left-0 -translate-x-1/3 -translate-y-3/4' src="/hp/assets/spy_2_2.webp" alt="" />
+        <img className='absolute z-5 top-0 right-0 translate-x-3/5 -translate-y-3/5' src="/hp/assets/spy_1_2.webp" alt="" />
     </section>
   )
 }

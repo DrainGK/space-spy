@@ -21,7 +21,7 @@ const YoutubeCarousel: React.FC = () => {
   // 11 slots : skeletons par défaut
   const [videos, setVideos] = useState<Video[]>(
     // Array(11).fill({ url: "0bT2p-GsF2U", title: "test" })
-    Array(11).fill({ url: "/assets/youtube_card.png", title: "" })
+    Array(11).fill({ url: "/hp/assets/youtube_card.png", title: "" })
   );
   const [constraints, setConstraints] = useState({ left: 0, right: 0 });
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
@@ -46,7 +46,7 @@ const YoutubeCarousel: React.FC = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/videos.json");
+        const res = await fetch("/hp/videos.json");
         if (!res.ok) throw new Error("Status " + res.status);
         const data: Video[] = await res.json();
         setVideos(prev => {
