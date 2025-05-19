@@ -91,7 +91,7 @@ const YoutubeCarousel: React.FC = () => {
         <motion.div
           ref={containerRef}
           className="slides-container flex ml-15 gap-x-10"
-          drag="x"
+          drag={containerRef.current ? "x" : false}
           dragConstraints={constraints}
           dragTransition={{ power: 0 }}
           onDrag={handleDragEnd}
