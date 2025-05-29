@@ -32,6 +32,7 @@ const Menu = () => {
             <a href="#news" className="text-2xl hover:underline">ニュース</a>
             <a href="#character" className="text-2xl hover:underline">キャラクター</a>
             <a href="#trivia" className="text-2xl hover:underline">Trivia</a>
+            {/* <a href="#goods" className="text-2xl hover:underline">Goods</a> */}
             <a href="#question" className="text-2xl hover:underline">Question</a>
           </div>
         </div>

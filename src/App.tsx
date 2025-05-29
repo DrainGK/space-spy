@@ -3,11 +3,11 @@ import Menu from './components/Menu'
 import Characters from './sections/Characters'
 import Faq from './sections/Faq'
 import Footer from './sections/Footer'
+// import Goods from './sections/Goods'
 import Header from './sections/Header'
 import News from './sections/News'
 import Synopsis from './sections/Synopsis'
 import Trivia from './sections/Trivia'
-// import Video from './sections/Video'
 import Youtube from './sections/Youtube'
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
           <News />
         </div>
         <Characters />
-        {/* <Video /> */}
         <Trivia />
+        {/* <Goods /> */}
         <Faq />
         <Footer />
       </div>
